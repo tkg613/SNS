@@ -1,9 +1,24 @@
 import React from 'react'
+import { useState } from 'react'
+import {toast} from 'react-toastify'
 
 const Login = () => {
 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+  })
+
+  const {name, email, password} = formData
+
   const onChange = function(e) {
 
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }))
+    
   }
 
   const onSubmit = function(e) {

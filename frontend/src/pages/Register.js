@@ -1,13 +1,32 @@
 import React from 'react'
+import { useState } from 'react'
+import {toast} from 'react-toastify'
 
 const Register = () => {
 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    password2: ''
+  })
+
+  const {name, email, password, password2} = formData
+
   const onChange = function(e) {
 
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }))
+    
   }
 
   const onSubmit = function(e) {
     e.preventDefault()
+    if (password !== password2) {
+      toast.error('Passwords do not match.')
+    }
   }
 
   return (
@@ -25,10 +44,11 @@ const Register = () => {
               name='name'
               type='text' 
               id='name' 
-              value={''} 
+              value={name} 
               onChange={onChange}
               placeholder='Name'
               autoComplete='off'
+              required
             />
           </div>
           <div className='form-group'>
@@ -36,10 +56,11 @@ const Register = () => {
               name='email' 
               type='text'
               id='email' 
-              value={''} 
+              value={email} 
               onChange={onChange}
               placeholder='Email'
               autoComplete='off'
+              required
             />
           </div>
           <div className='form-group'>
@@ -47,19 +68,21 @@ const Register = () => {
               name='password' 
               type='password'
               id='password' 
-              value={''} 
+              value={password} 
               onChange={onChange}
               placeholder='Password'
+              required
             />
           </div>
           <div className='form-group'>
             <input 
-              name='password' 
+              name='password2' 
               type='password'
-              id='password' 
-              value={''} 
+              id='password2' 
+              value={password2} 
               onChange={onChange}
               placeholder='Confirm Password'
+              required
             />
           </div>
 
