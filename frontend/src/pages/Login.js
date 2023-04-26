@@ -1,8 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { login } from '../features/auth/authSlice'
 import {toast} from 'react-toastify'
 
 const Login = () => {
+
+  const dispatch = useDispatch()
+
+  const {user, isSuccess, isLoading, message} = useSelector(state => state.auth)
 
   const [formData, setFormData] = useState({
     name: '',
@@ -23,6 +29,12 @@ const Login = () => {
 
   const onSubmit = function(e) {
     e.preventDefault()
+
+    const userData = {
+      email,
+      password
+    }
+    dispatch(login(userData))    
   }
 
   return (
@@ -35,17 +47,7 @@ const Login = () => {
       </div>
 
         <form onSubmit={onSubmit}>
-          <div className='form-group'>
-            <input 
-              name='name'
-              type='text' 
-              id='name' 
-              value={''} 
-              onChange={onChange}
-              placeholder='Name'
-              autoComplete='off'
-            />
-          </div>
+          
           <div className='form-group'>
             <input 
               name='email' 
