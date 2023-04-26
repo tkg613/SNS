@@ -1,22 +1,35 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { login } from '../features/auth/authSlice'
+import {useNavigate} from 'react-router-dom'
+import { login, reset } from '../features/auth/authSlice'
+import Loading from '../components/Loading'
 import {toast} from 'react-toastify'
 
 const Login = () => {
 
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const {user, isSuccess, isLoading, message} = useSelector(state => state.auth)
+  const {user, isSuccess, isError, isLoading, message} = useSelector(state => state.auth)
 
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
     password: '',
   })
 
-  const {name, email, password} = formData
+  const {email, password} = formData
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message)
+    }
+
+    if (isSuccess || user) {
+      navigate('/')
+    }
+    dispatch(reset())
+  })
 
   const onChange = function(e) {
 
@@ -37,6 +50,10 @@ const Login = () => {
     dispatch(login(userData))    
   }
 
+  if (isLoading) {
+    return <Loading />
+  }
+
   return (
     <>
       <div className='container'>
@@ -53,7 +70,7 @@ const Login = () => {
               name='email' 
               type='text'
               id='email' 
-              value={''} 
+              value={email} 
               onChange={onChange}
               placeholder='Email'
               autoComplete='off'
@@ -64,7 +81,7 @@ const Login = () => {
               name='password' 
               type='password'
               id='password' 
-              value={''} 
+              value={password} 
               onChange={onChange}
               placeholder='Password'
             />

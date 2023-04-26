@@ -53,7 +53,10 @@ input {
   width: 10%;
 }
 
-
+.loading {
+  font-size: 50px;
+  font-weight: bold;
+}
 
 
 
