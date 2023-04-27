@@ -9,7 +9,7 @@ const Comment = require('../models/commentModel')
 const getComments = asyncHandler(async function(req, res){
   
   // populate() will replace the user field with the actual user that corresponds to the reference
-  const comments = await Comments.find({post: req.params.postId}).populate('user').populate('post')
+  const comments = await Comment.find({post: req.params.postId}).populate('user').populate('post')
 
   if (!comments){
     res.status(404)
@@ -38,13 +38,13 @@ const createComments = asyncHandler(async function(req, res) {
     throw new Error('User not found.')
   }
 
-  // Get post
-  const post = await Post.findById(req.params.id)
+  console.log(req.params)
 
+  // Get post
   const comment = await Comment.create({
     text: text,
     user: req.user.id,
-    post: post
+    post: req.params.postId
   })
   
   res.status(201).json(comment)
