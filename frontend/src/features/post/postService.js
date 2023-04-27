@@ -9,6 +9,13 @@ const getPosts = async function() {
 
 }
 
+const getPost = async function(postId) {
+
+  const response = await axios.get(`${API_URL}/${postId}`)
+  return response.data
+
+}
+
 const createPost = async function(postData, token) {
   const config = {
     headers: {
@@ -25,7 +32,8 @@ const createPost = async function(postData, token) {
 
 const postService = {
   getPosts,
-  createPost
+  getPost,
+  createPost,
 }
 
 

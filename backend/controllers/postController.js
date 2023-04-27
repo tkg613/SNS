@@ -17,6 +17,21 @@ const getPosts = asyncHandler(async function(req, res){
   res.status(200).json(posts)
 })
 
+// @desc    Get a post
+// @route   /api/posts/:id
+// @access  Public
+const getPost = asyncHandler(async function(req, res){
+  
+  // populate() will replace the user field with the actual user that corresponds to the reference
+  const post = await Post.findById(req.params.id).populate('user')
+
+  if (!post){
+    res.status(401)
+    throw new Error('Post not found.')
+  }
+  res.status(200).json(post)
+})
+
 // @desc    Create post
 // @route   POST /api/posts
 // @access  Private
@@ -47,5 +62,6 @@ const createPost = asyncHandler(async function(req, res) {
 
 module.exports = {
   getPosts,
+  getPost,
   createPost
 }

@@ -17,11 +17,13 @@ const Home = () => {
   if (isLoading) {
     return <Loading />
   }
+  
+  const sortedPosts = posts.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   return (
     <>
       <div className='post-container'>
-        {posts.map(post => (
+        {sortedPosts.map(post => (
           <PostItem key={post._id} post={post} />
         ))}
       </div>

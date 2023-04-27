@@ -72,6 +72,23 @@ const loginUser = asyncHandler(async function(req, res) {
 
 })
 
+// @desc    Get a user
+// @route   GET /api/users/:id
+// @access  Public
+const getUser = asyncHandler(async function(req, res){
+  
+  // Do not get password and token info with this GET
+  const user = await User.findById(req.params.id).select('-password -token')
+
+  if (!user){
+    res.status(404)
+    throw new Error('User not found.')
+  }
+
+  res.status(200).json(user)
+})
+
+
 // @desc    Get current user
 // @route   /api/users/me
 // @access  Private
@@ -94,5 +111,6 @@ const generateToken = function(id){
 module.exports = {
   registerUser,
   loginUser,
+  getUser,
   getMe
 }

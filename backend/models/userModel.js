@@ -19,7 +19,7 @@ const userSchema = mongoose.Schema({
     default: "https://img.icons8.com/ios-glyphs/90/null/person-male.png"
   }
 }, {
-  timestamp: true
+  timestamps: true
 })
 
 module.exports = mongoose.model('User', userSchema)

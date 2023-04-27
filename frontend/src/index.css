@@ -1,9 +1,19 @@
+body,html {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .heading {
@@ -47,6 +57,7 @@ input {
   border-color: grey;
   border-width: 1px;
   width: 50%;
+  height: 30px;
 }
 
 .btn {
@@ -148,14 +159,42 @@ input {
   display: flex;
   font-size: 24px;
   align-items: center;
+  padding: 1rem;
 }
 
 .post-user img {
   height: 45px;
   width: 45px;
-  margin: auto 2rem;
+  margin-right: 1rem;
+}
+
+.post-user h4 {
+  margin: 0;
 }
 
 .post-content {
   margin-left: 1rem;
+}
+
+.post-link {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.post-link:hover {
+  color: grey;
+}
+
+
+/* User Page */
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info img {
+  height: 180px;
+  width: 180px;
 }

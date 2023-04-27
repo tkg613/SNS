@@ -28,10 +28,17 @@ const logout = async function() {
   localStorage.removeItem('user')
 }
 
+const getUser = async function(userId) {
+  const response = await axios.get(`${API_URL}/${userId}`)
+
+  return response.data
+}
+
 const authService = {
   register,
   login,
-  logout
+  logout,
+  getUser
 }
 
 export default authService
