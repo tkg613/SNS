@@ -7,16 +7,45 @@ const Post = require('../models/postModel')
 // @access  Public
 const getPosts = asyncHandler(async function(req, res){
   
-  const posts = await Post.find({})
+  // populate() will replace the user field with the actual user that corresponds to the reference
+  const posts = await Post.find({}).populate('user')
 
   if (!posts){
     res.status(401)
     throw new Error('Posts not found.')
   }
-
   res.status(200).json(posts)
 })
 
+// @desc    Create post
+// @route   POST /api/posts
+// @access  Private
+const createPost = asyncHandler(async function(req, res) {
+  const {text} = req.body
+
+  if (!text) {
+    res.status(400)
+    throw new Error('Please add text.')
+  }
+
+  // Get user
+  const user = await User.findById(req.user.id)
+
+  if (!user) {
+    res.status(401)
+    throw new Error('User not found.')
+  }
+
+  const post = await Post.create({
+    text: text,
+    user: req.user.id
+  })
+  
+  res.status(201).json(post)
+
+})
+
 module.exports = {
-  getPosts
+  getPosts,
+  createPost
 }

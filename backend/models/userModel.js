@@ -12,6 +12,11 @@ const userSchema = mongoose.Schema({
   password: {
     type: String,
     required: [true, 'Please add a password.']
+  },
+  image: {
+    type: String,
+    required: false,
+    default: "https://img.icons8.com/ios-glyphs/90/null/person-male.png"
   }
 }, {
   timestamp: true

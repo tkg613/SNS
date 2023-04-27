@@ -9,9 +9,23 @@ const getPosts = async function() {
 
 }
 
+const createPost = async function(postData, token) {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+
+  const response = await axios.post(API_URL, postData, config)
+
+  return response.data
+
+}
+
 
 const postService = {
-  getPosts
+  getPosts,
+  createPost
 }
 
 

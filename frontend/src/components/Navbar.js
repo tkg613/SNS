@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
-import {FaPeopleArrows, FaArrowCircleRight, FaArrowCircleLeft, FaRegAddressBook} from 'react-icons/fa'
+import {FaHome, FaPlus, FaPeopleArrows, FaArrowCircleRight, FaArrowCircleLeft, FaRegAddressBook} from 'react-icons/fa'
 import {logout, reset} from '../features/auth/authSlice'
 
 const Navbar = () => {
@@ -29,10 +29,22 @@ const Navbar = () => {
       <div className='navbar-links'>
 
         {user ? (
-          <Link to='/login' className='navbar-login' onClick={onLogout}>
-            <FaArrowCircleLeft /> 
-            <p>Logout</p>
-          </Link>
+          <>
+            <Link to='/' className='navbar-login'>
+              <FaHome /> 
+              <p>Home</p>
+            </Link>
+
+            <Link to='/new-post' className='navbar-login'>
+              <FaPlus /> 
+              <p>New Post</p>
+            </Link>
+
+            <Link to='/login' className='navbar-login' onClick={onLogout}>
+              <FaArrowCircleLeft /> 
+              <p>Logout</p>
+            </Link>
+          </>
         ) : (
           <> 
             <Link to='/login' className='navbar-login'>

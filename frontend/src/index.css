@@ -30,7 +30,16 @@ form {
   margin: 3rem auto;
   display: flex;
   justify-content: center;
-  height: 40px
+  
+}
+
+textarea {
+  resize: none;
+  border-radius: 10px;
+  border-color: grey;
+  border-width: 1px;
+  width: 50%;
+  height: 50px;
 }
 
 input {
@@ -69,6 +78,7 @@ input {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid black;
+  margin-bottom: 3rem;
 }
 
 .navbar-logo-container {
@@ -119,3 +129,33 @@ input {
 }
 
 
+/* Post Item */
+
+.post-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.post-card {
+  width: 50%;
+  border: 1px solid black;
+  margin-bottom: 3rem;
+}
+
+.post-user {
+  display: flex;
+  font-size: 24px;
+  align-items: center;
+}
+
+.post-user img {
+  height: 45px;
+  width: 45px;
+  margin: auto 2rem;
+}
+
+.post-content {
+  margin-left: 1rem;
+}

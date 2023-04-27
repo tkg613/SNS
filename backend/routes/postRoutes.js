@@ -1,9 +1,9 @@
 const express = require('express')
-const {getPosts} = require('../controllers/postController')
+const {getPosts, createPost} = require('../controllers/postController')
 const router = express.Router()
 const {protect} = require('../middleware/authMiddleware')
 
-// api/posts
-router.get('/', getPosts)
+
+router.route('/').get(getPosts).post(protect, createPost)
 
 module.exports = router
