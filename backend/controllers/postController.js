@@ -3,12 +3,27 @@ const User = require('../models/userModel')
 const Post = require('../models/postModel')
 
 // @desc    Get all posts
-// @route   /api/posts
+// @route   GET /api/posts
 // @access  Public
 const getPosts = asyncHandler(async function(req, res){
   
   // populate() will replace the user field with the actual user that corresponds to the reference
   const posts = await Post.find({}).populate('user')
+
+  if (!posts){
+    res.status(401)
+    throw new Error('Posts not found.')
+  }
+  res.status(200).json(posts)
+})
+
+// @desc    Get all posts for a user
+// @route   GET /api/posts/users/:id
+// @access  Public
+const getUserPosts = asyncHandler(async function(req, res){
+  
+  // Get all posts of a user specified in the URL
+  const posts = await Post.find({user: req.params.userId})
 
   if (!posts){
     res.status(401)
@@ -62,6 +77,7 @@ const createPost = asyncHandler(async function(req, res) {
 
 module.exports = {
   getPosts,
+  getUserPosts,
   getPost,
   createPost
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import {getPost} from '../features/post/postSlice'
 import Loading from '../components/Loading'
@@ -35,11 +36,13 @@ const Post = () => {
   return (
       <div className='post-container'>
         <div className='post-card'>
+        <Link to={`/users/${post.user._id}`} className='post-link'>
           <div className='post-user'>
+          
             <img src={post.user.image} alt='profile pic' />
             <h4>@{post.user.name}</h4>
           </div>
-
+        </Link>
           <hr />
 
           <div className='post-content'>

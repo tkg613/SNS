@@ -79,9 +79,6 @@ input {
 }
 
 
-
-
-
 /* Navigation */
 
 .navbar-container {
@@ -176,6 +173,10 @@ input {
   margin-left: 1rem;
 }
 
+.post-content p {
+  font-size: 20px;
+}
+
 .post-link {
   text-decoration: none;
   color: black;
@@ -192,9 +193,24 @@ input {
 .user-info {
   display: flex;
   align-items: center;
+  margin-bottom: 3rem;
 }
 
 .user-info img {
   height: 180px;
   width: 180px;
+}
+
+.user-post {
+  width: 50%;
+  height: 10%;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 2rem;
+}
+
+.post-footer {
+  text-align: right;
+  margin: 5px;
+  font-size: 15px;
 }

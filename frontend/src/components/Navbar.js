@@ -26,6 +26,8 @@ const Navbar = () => {
         <p>SNS</p>
       </Link>
 
+      <h1>Hi, {user.name}...</h1>
+
       <div className='navbar-links'>
 
         {user ? (

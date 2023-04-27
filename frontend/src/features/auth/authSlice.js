@@ -10,7 +10,7 @@ const initialState = {
   isSuccess: false,
   isLoading: false,
   message: '',
-  retrievedUser: null
+  retrievedUser: {}
 }
 
 export const register = createAsyncThunk('auth/register', async function(user, thunkAPI){

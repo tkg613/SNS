@@ -9,6 +9,13 @@ const getPosts = async function() {
 
 }
 
+const getUserPosts = async function(userId) {
+
+  const response = await axios.get(`${API_URL}/users/${userId}`)
+  return response.data
+
+}
+
 const getPost = async function(postId) {
 
   const response = await axios.get(`${API_URL}/${postId}`)
@@ -32,6 +39,7 @@ const createPost = async function(postData, token) {
 
 const postService = {
   getPosts,
+  getUserPosts,
   getPost,
   createPost,
 }
