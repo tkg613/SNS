@@ -38,7 +38,8 @@ const createComments = asyncHandler(async function(req, res) {
     throw new Error('User not found.')
   }
 
-  console.log(req.params)
+  // Get post
+const post = await Post.findById(req.params.postId)
 
   // Get post
   const comment = await Comment.create({
@@ -46,6 +47,10 @@ const createComments = asyncHandler(async function(req, res) {
     user: req.user.id,
     post: req.params.postId
   })
+
+  // Add user and post attributes to comment object
+  comment.user = user
+  comment.post = post
   
   res.status(201).json(comment)
 

@@ -40,7 +40,6 @@ form {
   margin: 3rem auto;
   display: flex;
   justify-content: center;
-  
 }
 
 textarea {
@@ -143,7 +142,6 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
 }
 
 .post-card {
@@ -187,6 +185,27 @@ input {
   color: grey;
 }
 
+.comment-card {
+  width: 30%;
+  border: 1px solid black;
+  border-radius: 7px;
+  margin-bottom: 3rem;
+  background-color: azure;
+}
+
+.textarea-group {
+  width: 80%;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.textarea-group p {
+  font-size: 20px;
+  font-weight: bold;
+}
 
 /* User Page */
 

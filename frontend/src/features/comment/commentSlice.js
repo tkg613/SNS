@@ -23,6 +23,7 @@ export const getComments = createAsyncThunk('post/getComments', async function(p
 export const createComment = createAsyncThunk('post/createComment', async function({commentData, postId}, thunkAPI) {
   try {
     const token = thunkAPI.getState().auth.user.token
+
     return await commentService.createComment(commentData, postId, token)
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message)
@@ -65,6 +66,7 @@ export const commentSlice = createSlice({
       .addCase(createComment.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
+        state.comments = [...state.comments, action.payload]
       })
       .addCase(createComment.rejected, (state, action) => {
         state.isLoading = false

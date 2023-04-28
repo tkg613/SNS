@@ -6,7 +6,6 @@ import { getUser, reset } from '../features/auth/authSlice'
 import { getUserPosts } from '../features/post/postSlice'
 import { toast } from 'react-toastify'
 import Loading from '../components/Loading'
-import PostItem from '../components/PostItem'
 
 const User = () => {
 
@@ -36,7 +35,7 @@ const User = () => {
     <>
       <div className='container'>
         <div className='user-info'>
-          <img src={retrievedUser.image} alt='profile image' />
+          <img src={retrievedUser.image} alt='profile' />
           <h1>@{retrievedUser.name}</h1>
         </div>
       </div>
