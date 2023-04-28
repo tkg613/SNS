@@ -15,6 +15,7 @@ const Post = () => {
 
   const {postId} = useParams()
 
+  const {user} = useSelector(state => state.auth)
   const {post, isLoading, isError, message} = useSelector(state => state.post)
   const {comments, isLoading: commentIsLoading, isError: commentIsError, message: commentMessage} = useSelector(state => state.comment)
 
@@ -82,6 +83,7 @@ const Post = () => {
       </div>
 
       
+      {user && (
         <form onSubmit={onSubmit} className='container'>
           <div className='textarea-group'>
           <p>Comment your thoughts.</p>
@@ -101,7 +103,7 @@ const Post = () => {
             </button>
           </div>
         </form>
-    
+      )}
 
       <div className='container'>
         <p>Comments on this post:</p>

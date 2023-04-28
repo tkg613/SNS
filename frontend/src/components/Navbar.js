@@ -25,9 +25,8 @@ const Navbar = () => {
         <FaPeopleArrows className='navbar-logo'/>
         <p>SNS</p>
       </Link>
-
-      <h1>Hi, {user.name}...</h1>
-
+      {user && (<h1>Hi, {user.name}...</h1>)}
+      
       <div className='navbar-links'>
 
         {user ? (

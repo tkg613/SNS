@@ -8,6 +8,7 @@ import Register from './pages/Register';
 import NewPost from './pages/NewPost';
 import Post from './pages/Post';
 import User from './pages/User'
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/users/:userId' element={<User />} />
-          <Route path='/new-post' element={<NewPost />} />
+          <Route path='/new-post' element={<PrivateRoute />}>
+            <Route path='/new-post' element={<NewPost />} />
+          </Route>
           <Route path='/posts/:postId' element={<Post />} />
         </Routes>
         </div>
