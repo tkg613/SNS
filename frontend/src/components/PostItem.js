@@ -27,6 +27,10 @@ const PostItem = ({post}) => {
         
       </div>
 
+      <div className='post-footer'> 
+        Posted: {new Date(post.createdAt).toLocaleString('en-us')}
+      </div>
+
     </div>
   )
 }

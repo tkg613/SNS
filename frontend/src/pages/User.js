@@ -39,7 +39,7 @@ const User = () => {
           <h1>@{retrievedUser.name}</h1>
         </div>
       </div>
-      <div className='post-container'>
+      <div className='post-user-container'>
         {posts.map(post => (
           <div key={post._id} className='user-post'>
             <Link key={post._id} to={`/posts/${post._id}`} className='post-link'>

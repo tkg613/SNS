@@ -20,6 +20,10 @@ const CommentItem = ({comment}) => {
         </p>
       </div>
 
+      <div className='post-footer'> 
+        Commented: {new Date(comment.createdAt).toLocaleString('en-us')}
+      </div>
+
     </div>
   )
 }
